@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import "dotenv/config";
 import myUserRoute from "./routes/MyUserRoute";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
+import restaurantRoute from "./routes/RestaurantRoute";
 
 dotenv.config();
 const PORT_NUMBER = 7000;
@@ -29,6 +30,7 @@ app.get("/health", async (req: Request, res: Response) => {
 
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 app.listen(PORT_NUMBER, () => {
   console.log(`server running on port: ${PORT_NUMBER}`);
