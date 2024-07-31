@@ -23,6 +23,17 @@ cloudinary.config({
 });
 const app = express();
 app.use(cors());
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://grab-eats-client.onrender.com/"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 app.use(express.json());
