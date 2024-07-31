@@ -22,12 +22,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 const app = express();
-app.use(
-  cors({
-    origin: "https://slug-panel.onrender.com",
-  })
-);
-app.options("*", cors());
+app.use(cors());
+
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 app.use(express.json());
 
